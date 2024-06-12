@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { useState } from 'react'
 
 const AddMusic = () => {
@@ -15,6 +16,16 @@ const AddMusic = () => {
     }
     const readValue=()=>{
         console.log(data)
+        axios.post("http://localhost:8080/add",data).then(
+            (response)=>{
+                console.log(response.data)
+                if(response.data.status =="success"){
+                    alert("successfully added")
+                }else{
+                    alert("error")
+                }
+            }
+        ).catch()
     }
   return (
     <div>
